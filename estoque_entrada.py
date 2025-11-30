@@ -113,6 +113,7 @@ def cadastrar_produto(db_session):
     # ========================================================================
     # PASSO 3: EXIBIR RESUMO DO ESTOQUE
     # ========================================================================
+    
     listar_estoque(db_session)
 
 
