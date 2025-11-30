@@ -84,3 +84,4 @@ def cadastrar_produto(db_session):
             print(f"  Produto '{nome}' cadastrado com sucesso (qtd={quantidade}, preco={preco:.2f}).")
 
     print("\n Cadastro concluído!")
+        return
