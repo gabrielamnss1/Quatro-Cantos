@@ -9,6 +9,7 @@ def cadastrar_produto(db_session):
     # ========================================================================
     # PASSO 1: DEFINIR QUANTOS PRODUTOS SERÃO CADASTRADOS
     # ========================================================================
+    
     try:
         qtd_cadastro = int(input("\n Quantos produtos deseja cadastrar agora? "))
 
