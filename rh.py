@@ -222,3 +222,11 @@ def calcular_folha_pagamento():
         # Adiciona o funcionário à lista para exibir no relatório final
         lista_funcionarios.append(resultado)
         print("\n Funcionario cadastrado com sucesso!")
+
+    # ========================================================================
+    # PASSO 3: ORDENAR A LISTA POR NOME (ORDEM ALFABÉTICA)
+    # ========================================================================
+    # sort() organiza a lista in-place (altera a lista original)
+    # key=lambda x: x['nome'] define que a ordenação será pelo campo 'nome'
+    # lambda x: x['nome'] é uma função anônima que retorna o nome do funcionário
+    lista_funcionarios.sort(key=lambda x: x['nome'])
