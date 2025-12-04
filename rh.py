@@ -285,4 +285,17 @@ def calcular_folha_pagamento():
     print(f"{'='*50}")
     print(f" Total Liquido (a pagar):       R$ {total_liquido:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
     print("="*50)
+
+
+    # ========================================================================
+    # PASSO 6: CALCULAR CUSTO TOTAL DA EMPRESA (INCLUINDO ENCARGOS)
+    # ========================================================================
+    # Encargos patronais: FGTS (8%), PIS (1%), INSS patronal (20%), etc.
+    # Total aproximado: 27,65% sobre o salário bruto
+    encargos = total_bruto * 0.2765
+    custo_total_empresa = total_liquido + total_inss + total_ir + encargos
     
+    print(f"\n CUSTO TOTAL PARA A EMPRESA:")
+    print(f"   (Incluindo encargos patronais estimados em 27,65%)")
+    print(f"   R$ {custo_total_empresa:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+    print("="*50)
