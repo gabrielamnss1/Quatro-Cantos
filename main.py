@@ -84,3 +84,24 @@ def iniciar_sistema():
     # SessionLocal() cria uma sessão que permite executar operações no banco
     # (consultas, inserções, atualizações, exclusões)
     db_session = SessionLocal()
+
+    try:
+        # ====================================================================
+        # LOOP PRINCIPAL DO SISTEMA
+        # ====================================================================
+        # Este loop mantém o sistema rodando até o usuário decidir sair
+        while True:
+            # ================================================================
+            # EXIBIÇÁO DO MENU PRINCIPAL
+            # ================================================================
+            print("\n" + "="*50)
+            print("   QUATRO CANTOS")
+            print("   Sistema de Gestao Empresarial")
+            print("="*50)
+            print("1 - Modulo Operacional (Simular Capacidade de Producao)")
+            print("2 - Modulo Estoque (Cadastrar Entrada de Produtos)")
+            print("3 - Modulo Estoque (Registrar Saida/Venda)")
+            print("4 - Modulo Financeiro (Calcular Custos e Lucros)")
+            print("5 - Modulo RH (Folha de Pagamento)")
+            print("0 - Sair do Sistema")
+            print("="*50)
