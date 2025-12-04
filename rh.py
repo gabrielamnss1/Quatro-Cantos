@@ -181,3 +181,20 @@ def calcular_folha_pagamento():
             cargo = "Operario"
             valor_hora = 15.00
             paga_hora_extra = True
+
+        # ====================================================================
+        # PASSO 2.2.1: COLETAR HORAS EXTRAS (SE APLICÁVEL)
+        # ====================================================================
+        horas_extras = 0
+        if paga_hora_extra:
+            try:
+                horas_extras = float(input(" Horas extras trabalhadas no mes: "))
+                if horas_extras < 0:
+                    print(" Valor negativo ajustado para 0")
+                    horas_extras = 0
+            except ValueError:
+                print(" Valor invalido! Considerando 0 horas extras.")
+                horas_extras = 0
+        else:
+            # Cargos de confiança (gerente/diretor) não recebem hora extra
+            print(f" {cargo} nao recebe hora extra (cargo de confianca).")
