@@ -269,3 +269,20 @@ def calcular_folha_pagamento():
         total_inss += f['inss']
         total_ir += f['ir']
         total_liquido += f['liquido']
+
+    # ========================================================================
+    # PASSO 5: EXIBIR TOTALIZADORES (RESUMO GERAL)
+    # ========================================================================
+    print("\n" + "="*50)
+    print("   RESUMO GERAL DA FOLHA")
+    print("="*50)
+    print(f" Total de funcionarios: {len(lista_funcionarios)}")
+    
+    # Formatação monetária brasileira
+    print(f"\n Total Bruto (antes descontos): R$ {total_bruto:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+    print(f" Total INSS:                    R$ {total_inss:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+    print(f" Total IR:                      R$ {total_ir:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+    print(f"{'='*50}")
+    print(f" Total Liquido (a pagar):       R$ {total_liquido:,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.'))
+    print("="*50)
+    
