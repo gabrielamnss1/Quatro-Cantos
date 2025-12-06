@@ -1,3 +1,19 @@
+# estoque_saida.py
+# ============================================================================
+# MÓDULO 2: ESTOQUE - SAÍDA DE PRODUTOS (VENDAS)
+# ============================================================================
+# Este módulo é responsável por registrar vendas e dar baixa no estoque.
+# Implementa lógica de busca e verificação de saldo disponível.
+#
+# CONCEITOS DEMONSTRADOS:
+# - Interação com Banco de Dados (SQLAlchemy)
+# - Busca case-insensitive no banco
+# - Estruturas condicionais complexas (if/elif/else)
+# - Atualização de dados no banco
+# - Validação de estoque
+# - Tratamento de pedidos parciais
+# ============================================================================
+
 from src.database import Produto
 from sqlalchemy import func
 
