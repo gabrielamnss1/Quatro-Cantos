@@ -317,5 +317,5 @@ def calcular_folha_pagamento():
 # FUNÇÁO AUXILIAR PARA TESTES (OPCIONAL)
 # ============================================================================
 if __name__ == "__main__":
-    print("🧪 Testando o Módulo de RH...\n")
+    print("Testando o Módulo de RH...\n")
     calcular_folha_pagamento()
