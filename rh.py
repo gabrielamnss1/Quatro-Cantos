@@ -1,23 +1,44 @@
 # -*- coding: utf-8 -*-
 # rh.py
 # ============================================================================
-# MÓDULO 4: RECURSOS HUMANOS - FOLHA DE PAGAMENTO
+# ARQUIVO: main.py
+# SISTEMA DE GESTÃO - QUATRO CANTOS
 # ============================================================================
-# Este módulo calcula a folha de pagamento com salários, horas extras,
-# INSS e Imposto de Renda de acordo com as tabelas de 2025.
-# 
-# CONCEITOS DEMONSTRADOS:
-# - Estruturas condicionais complexas (if/elif/else)
-# - Cálculo de impostos progressivos
-# - Ordenação de listas (sort com lambda)
-# - Manipulação de dicionários
-# - Validação de dados
-# - Formatação de relatórios
+#
+# DESCRIÇÃO:
+# Este é o arquivo principal do sistema em modo console/terminal.
+# Ele gerencia o menu interativo e permite que o usuário navegue entre
+# os diferentes módulos do sistema através de opções numeradas.
+#
+# FUNCIONALIDADES:
+# 1. Exibir menu principal com todas as opções disponíveis
+# 2. Capturar a escolha do usuário
+# 3. Redirecionar para o módulo correspondente
+# 4. Manter o sistema em loop até o usuário decidir sair
+# 5. Gerenciar conexão com o banco de dados
+#
+# MÓDULOS INTEGRADOS:
+# - Operacional: Cálculo de capacidade produtiva
+# - Estoque Entrada: Cadastro de produtos recebidos
+# - Estoque Saída: Registro de vendas e saídas
+# - Financeiro: Análise de custos e lucros
+# - RH: Gestão de folha de pagamento
+#
 # ============================================================================
 
+# Configurar encoding UTF-8 para Windows
+import config_encoding
+
 # ============================================================================
-# FUNÇÕES DE CÁLCULO (LÓGICA PURA)
+# IMPORTAÇÃO DOS MÓDULOS CUSTOMIZADOS DO SISTEMA
 # ============================================================================
+# Cada módulo representa uma funcionalidade específica do sistema
+import operacional       # Módulo para cálculos operacionais e produtivos
+import estoque_entrada   # Módulo para entrada de produtos no estoque
+import estoque_saida     # Módulo para saída/venda de produtos
+import financeiro        # Módulo para análises financeiras
+import rh                # Módulo de Recursos Humanos (RH)
+from database import init_db, SessionLocal  # Funções para gerenciar o banco de dados
 
 def calcular_inss(salario_bruto):
     """Calcula o desconto do INSS baseado na tabela progressiva de 2025"""
@@ -81,9 +102,9 @@ def processar_funcionario(nome, cargo, horas_extras):
         "liquido": salario_liquido
     }
 
-def calcular_folha_pagamento():
+def iniciar_sistema():
     """
-    Calcula a folha de pagamento completa com descontos de INSS e IR.
+    Função principal que inicializa e gerencia todo o sistema.
     
     Esta função demonstra conceitos de:
     - Cálculo de impostos progressivos (faixas diferentes de alíquota)
@@ -93,7 +114,11 @@ def calcular_folha_pagamento():
     - Totalização e agregação de dados
     - Cálculo de horas extras (valor dobrado - 100% de acréscimo)
     
-    MODO: Interativo para console
+    FUNCIONAMENTO:
+    - O sistema roda em um loop infinito (while True)
+    - A cada iteração, exibe o menu e aguarda entrada do usuário
+    - Executa a ação correspondente à opção escolhida
+    - Só encerra quando o usuário escolhe a opção '0'
     """
 
     
@@ -121,7 +146,7 @@ def calcular_folha_pagamento():
         return
     
     # ========================================================================
-    # PASSO 2: LOOP PARA CADASTRAR CADA FUNCIONÁRIO
+    # CRIAÇÃO DA SESSÃO DO BANCO DE DADOS
     # ========================================================================
     for i in range(qtd):
         print("\n" + "="*70)
@@ -148,7 +173,7 @@ def calcular_folha_pagamento():
         cargo_opcao = input("\n➤ Escolha o cargo (1-4): ").strip()
         
         # ====================================================================
-        # PASSO 2.2: DEFINIR SALÁRIO BASE E ELEGIBILIDADE PARA HORA EXTRA
+        # LOOP PRINCIPAL DO SISTEMA
         # ====================================================================
         # Cada cargo tem um valor/hora diferente e regras diferentes para HE
         valor_hora = 0
@@ -209,7 +234,7 @@ def calcular_folha_pagamento():
             print(f"\n   [INFO] {cargo} não recebe hora extra (cargo de confiança).")
         
         # ====================================================================
-        # PASSO 2.3: CALCULAR SALÁRIO BRUTO E DESCONTOS (USANDO FUNÇÕES PURAS)
+        # BLOCO FINALLY - SEMPRE EXECUTADO
         # ====================================================================
         # Chama a função pura que realiza todos os cálculos de folha
         resultado = processar_funcionario(nome, cargo, horas_extras)
@@ -340,6 +365,9 @@ def calcular_folha_pagamento():
 # ============================================================================
 # FUNÇÃO AUXILIAR PARA TESTES (OPCIONAL)
 # ============================================================================
+# Este bloco só é executado se o arquivo for rodado diretamente
+# (não quando é importado como módulo em outro arquivo)
+
 if __name__ == "__main__":
     print("Testando o Módulo de RH...\n")
     calcular_folha_pagamento()
